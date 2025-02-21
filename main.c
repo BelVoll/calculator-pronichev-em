@@ -3,13 +3,13 @@
 #include <stdbool.h>
 
 struct stack {
-	double val;
+	int val;
 	char sig;
 	struct stack* next;
 };
 
 
-void push(struct stack** stack, double val_, char sig_) {
+void push(struct stack** stack, int val_, char sig_) {
 
 	struct stack* tmp = malloc(sizeof(struct stack));
 	tmp->val = val_;
@@ -42,14 +42,14 @@ void del_spaces(char* str) {
 }
 
 
-double in_double(struct stack** digits) {
+int in_int(struct stack** digits) {
 
 	if ((*digits) == NULL)
 		return 0;
 
-	double num = (*digits)->sig - '0';
+	int num = (*digits)->sig - '0';
 	pop(digits);
-	double c = 10;
+	int c = 10;
 
 	while ((*digits) != NULL)
 	{
@@ -75,8 +75,8 @@ int ranK(char ch) {
 
 void calc_stack(struct stack** num, struct stack** sign) {
 
-	double b = (*num)->val; pop(num);
-	double a = (*num)->val; pop(num);
+	int b = (*num)->val; pop(num);
+	int a = (*num)->val; pop(num);
 
 	switch ((*sign)->sig)
 	{
@@ -89,7 +89,7 @@ void calc_stack(struct stack** num, struct stack** sign) {
 }
 
 
-double count(char* str) {
+int count(char* str) {
 
 	struct stack* num = NULL;
 	struct stack* sign = NULL;
@@ -104,7 +104,7 @@ double count(char* str) {
 			for (; str[i] != '+' && str[i] != '-' && str[i] != '/' && str[i] != '*' && str[i] != ')' && str[i] != '(' && str[i] != '\0'; i++)
 				push(&digits, 0, str[i]);
 
-			push(&num, in_double(&digits), 0);
+			push(&num, in_int(&digits), 0);
 			i--;
 		}
 
@@ -138,7 +138,7 @@ double count(char* str) {
 	while (sign != NULL)
 		calc_stack(&num, &sign);
 
-	double res = num->val;
+	int res = num->val;
 	pop(&num);
 	return res;
 }
@@ -164,6 +164,6 @@ int main()
 	get_str(str, 1024);
 
 	del_spaces(str);
-	printf("\n%lf\n", count(str));
+	printf("\n%d\n", count(str));
 	return 0;
 }
