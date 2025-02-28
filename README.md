@@ -129,8 +129,8 @@
 - Зависимости автоматически собираются благодаря правилам для `.o` файлов и включению `.d` файлов.
 
 ### Структура проекта
-calculator-pronichev-em/
-├── build/  
+calculator-pronichev-em/`
+├── build/
 │   ├── app.exe
 │   └── unit-tests.exe
 ├── src/
@@ -141,10 +141,10 @@ calculator-pronichev-em/
 │   │   └── __pycache__/
 │   └── unit/
 │       └── tests.cpp
-├── googletest/
-├── venv/
+├── .googletest/
+├── .venv/
 ├── Makefile
-└── README.md
+└── README.md`
 
 
 Проект полностью соответствует требованиям DZ-3, включая поддержку замены интеграционных тестов и управление зависимостями.
